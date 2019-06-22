@@ -1,0 +1,65 @@
+<!-- main app container -->
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+              <h3>User Management System Registration</h3>
+              <form [formGroup]="registerForm" (ngSubmit)="addDetails()">
+                  <div class="form-group">
+                      <label>Full Name</label>
+                      <input type="text" formControlName="fullname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fullname.errors }" />
+                      <div *ngIf="submitted && f.fullname.errors" class="invalid-feedback">
+                          <div *ngIf="f.fullname.errors.required">First Name is required</div>
+                      </div>
+                  </div>
+                 
+                  <div class="form-group">
+                      <label>Email</label>
+                      <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                          <div *ngIf="f.email.errors.required">Email is required</div>
+                          <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label>Mobile Number</label>
+                      <input type="text" formControlName="number" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.number.errors }" />
+                      <div *ngIf="submitted && f.number.errors" class="invalid-feedback">
+                          <div *ngIf="f.number.errors.required">Number is required & must be valid one</div>
+                          
+                     </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="contry">Countries</label>
+                      <select class="form-control" id="contry" formControlName="country" [ngClass]="{ 'is-invalid': submitted && f.country.errors }" >
+                        <option *ngFor="let contry of countries" [value]="contry.id">{{contry.name}}</option>
+                      </select>
+                      <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                          <div *ngIf="f.country.errors.required">Number is required</div>
+                    </div>
+                  </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                      <textarea type="text" class="form-control" formControlName="description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" ></textarea>
+                      <div *ngIf="submitted && f.number.errors" class="invalid-feedback">
+                      <div *ngIf="f.description.errors.required">Message is required</div>
+                      </div> 
+                    </div>
+                      <div class="from-group" >
+                          <label for="dateofBirth">Please select date</label>
+                           <input id="dateofBirth" name="dateofBirth"  type="text" class="form-control" bsDatepicker formControlName="dateofBirth" [ngClass]="{ 'is-invalid': submitted && f.dateofBirth.errors }" />
+                           <div *ngIf="submitted && f.dateofBirth.errors" class="invalid-feedback">
+                           <div *ngIf="f.dateofBirth.errors.required">Message is required</div>
+                            </div>
+                        </div>
+
+                <div class="form-group">
+                      <button class="btn btn-primary">Add Details</button>
+                  </div>
+                 
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
